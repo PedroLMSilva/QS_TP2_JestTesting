@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Clientes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/icon.ico">
+    <meta name="description" content="Página para gestão de clientes">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="libs/bootstrap_4/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="libs/DataTable/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="libs/fontawesome-free-5.15.4/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/home.css" />
+
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script src="libs/bootstrap_4/js/popper.min.js"></script>
+    <script src="libs/bootstrap_4/js/bootstrap.min.js"></script>       
+    <script src="libs/DataTable/jquery.dataTables.min.js"></script>
+    <script src="libs/DataTable/dataTables.bootstrap4.min.js"></script>
+    <script src="scripts/helper.js"></script>
+    <script src="scripts/home.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/home.html">
+          <img src="images/icon.png" width="30" height="30" class="d-inline-block align-top" alt="logotipo da empresa">
+          TechRepair
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/clients.html">Clientes</a>
+            </li>
+            <li class="nav-item" id="usersNavBarItem">
+              <a class="nav-link" href="/users.html">Utilizadores</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto nav-flex-icons">
+            <li class="nav-item">
+              <a class="nav-link waves-effect waves-light" aria-expanded="false" style="cursor: pointer;">
+                <button type="button" class="btn btn-sm btn-secondary" id="topButtonMenuMessage">
+                  Mensagens
+                </button>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer;">
+                <i class="fas fa-user"></i>
+                <span id="navbarDropdownMenuLinkUserId"></span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item waves-effect waves-light" href="#" id="userLabelIcon"></a>
+                <a class="dropdown-item waves-effect waves-light" href="#" id="buttonLogout">
+                  <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+    </nav>
+    
+    <div class="container mt-2 mb-3">
+        <button class="btn btn-secondary" id="btnNewService">Novo Serviço</button>
+        <label class="hiddenElement" for="dropDownTypeJobList">Selecionar trabalhos: </label>
+        <div class="form-group dropDownTypeJob">
+          <select class="form-control custom-select" id="dropDownTypeJobList"></select>
+        </div>
+    </div>
+
+    <div class="container">
+      <table summary="Todos as reparações de um determinado cliente" style="width: 100%;" class="table table-sm table-striped table-bordered" id="jobsTable">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Criado por</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Prioridade</th>
+            <th scope="col">Notas</th>
+            <th scope="col">-</th>
+          </tr>
+        </thead>
+        <tbody> </tbody>
+      </table>
+    </div>
+
+
+
+    <div class="container-direct-menssage">
+      <div class="container-direct-menssage-blur"></div>
+      <div class="card card-primary card-outline">
+        <div class="card-header">
+          <h3 class="card-title" id="containerDirectMenssageTitle"></h3>
+
+          <div class="card-tools">
+            <div class="dropdown show">
+              <a class="btn btn-sm btn-secondary dropdown-toggle" role="button" id="dropdownMessageMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-comments"></i>
+              </a>
+            
+              <div class="dropdown-menu" aria-labelledby="dropdownMessageMenuLink">
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <div class="card-body" id="dropdownMessageMenuBody"></div>
+
+        <div class="card-footer">
+          <div class="input-group">
+            <label for="inpWebSocketMessage" class="hiddenElement">Escrever a mensagem</label>
+            <input type="text" name="message" placeholder="Digite mensagem..." class="form-control" id="inpWebSocketMessage">
+            <span class="input-group-append">
+              <button type="button" class="btn btn-primary" id="buttonSendMessage">Send</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="newServiceContainer">
+      <div class="newServiceContainerBlur"></div>
+      <div class="newServiceContainerOuterBody">
+        <div class="row" style="padding-right: 10px;">
+          <div class="col-8">
+            <div class="card card-primary jobCardDetails1">
+              <div class="card-header bg-primary text-white">
+                <h1 class="card-title" style="font-size: 15pt;">Detalhes do Equipamento</h1>
+              </div>
+              <div class="card-body">
+                <div class="form-row">
+                  <div class="form-group col-6">
+                    <label for="inputEquipmentType">Tipo de Equipamento</label>
+                    <select id="inputEquipmentType" class="form-control custom-select"></select>
+                  </div>
+                  <div class="form-group col-6">
+                    <label for="inputEquipmentBrand">Marca</label>
+                    <select id="inputEquipmentBrand" class="form-control custom-select"></select>
+                  </div>
+                </div>
+                <div class="form-group textareaEquipmentTypeDescription">
+                  <label for="textareaEquipmentType">Descrição do Equipamento</label>
+                  <textarea id="textareaEquipmentType" class="form-control" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="inputEquipmentProcedure">Tipo de Reparação</label>
+                  <select id="inputEquipmentProcedure" class="form-control custom-select"></select>
+                </div>
+                <div class="form-group textareaEquipmentProcedureDescription">
+                  <label for="textareaEquipmentProcedure">Descrição da Reparação</label>
+                  <textarea id="textareaEquipmentProcedure" class="form-control" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="textareaJobNotes">Notas</label>
+                  <textarea id="textareaJobNotes" class="form-control" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="inputJobStatus">Estado da Reparação</label>
+                  <select id="inputJobStatus" class="form-control custom-select"></select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="card card-primary jobCardDetails2">
+              <div class="card-header bg-primary text-white">
+                <h1 class="card-title" style="font-size: 13pt;">Cliente</h1>
+              </div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="inputClientName">Nome</label>
+                  <input type="text" id="inputClientName" class="form-control" readonly/>
+                </div>
+                <div class="form-group">
+                  <label for="inputClientEmail">Email</label>
+                  <input type="text" id="inputClientEmail" class="form-control" readonly/>
+                </div>
+                <div class="form-group">
+                  <label for="inputClientNif">Contribuinte</label>
+                  <input type="text" id="inputClientNif" class="form-control" readonly/>
+                </div>
+               
+              </div>
+            </div>
+
+            <div class="card card-primary mt-2 jobEditCardDetailsPriority">
+              <div class="card-header bg-primary text-white">
+                <h1 class="card-title mt-1" style="font-size: 15pt;">Prioridade</h1>
+              </div>
+              <div class="card-body card-body-header">
+              </div>
+              <div class="card-body card-body-body">
+                
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="row editJobFinalisedDiv">
+          <div class="col-12">
+            <div class="alert alert-primary mt-2" role="alert"></div>
+          </div>
+        </div>
+        <div class="newServiceContainerOuterBodyFooter">
+          <button type="button" class="btn btn-danger btnClose ml-1">Fechar</button>
+          <button type="button" class="btn btn-primary btnSave ml-1">Guardar</button>
+          <button type="button" class="btn btn-primary btnReopen">Reabrir</button>           
+        </div>
+      </div>
+    </div>
+
+
+    <div id="newCreateServiceContainer">
+      <div class="newCreateServiceContainerBlur"></div>
+      <div class="newCreateServiceContainerOuterBody">
+        <div class="row" style="padding-right: 10px;">
+         
+          <div class="col-8">
+            <div class="card card-primary jobCardDetails11">
+              <div class="card-header bg-primary text-white">
+                <h1 class="card-title" style="font-size: 15pt;">Detalhes do Equipamento</h1>
+              </div>
+              <div class="card-body">
+                <div class="form-row">
+                  <div class="form-group col-6">
+                    <label for="inputEquipmentType1">Tipo de Equipamento</label>
+                    <select id="inputEquipmentType1" class="form-control custom-select"></select>
+                  </div>
+                  <div class="form-group col-6">
+                    <label for="inputEquipmentBrand1">Marca</label>
+                    <select id="inputEquipmentBrand1" class="form-control custom-select"></select>
+                  </div>
+                </div>
+                <div class="form-group textareaEquipmentTypeDescription1">
+                  <label for="textareaEquipmentType1">Descrição do Equipamento</label>
+                  <textarea id="textareaEquipmentType1" class="form-control" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="inputEquipmentProcedure1">Tipo de Reparação</label>
+                  <select id="inputEquipmentProcedure1" class="form-control custom-select"></select>
+                </div>
+                <div class="form-group textareaEquipmentProcedureDescription1">
+                  <label for="textareaEquipmentProcedure1">Descrição da Reparação</label>
+                  <textarea id="textareaEquipmentProcedure1" class="form-control" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="textareaJobNotes1">Notas</label>
+                  <textarea id="textareaJobNotes1" class="form-control" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="inputJobStatus1">Estado da Reparação</label>
+                  <select id="inputJobStatus1" class="form-control custom-select"></select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="card card-primary jobCardDetails21">
+              <div class="card-header bg-primary text-white">
+                <h5 class="card-title">Cliente</h5>
+              </div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="dropCreateClient">Nome</label>
+                  <select id="dropCreateClient" class="form-control custom-select"></select>
+                </div>               
+              </div>
+            </div>
+         
+            <div class="card card-primary mt-2 jobCreateCardDetailsPriority">
+              <div class="card-header bg-primary text-white">
+                <h5 class="card-title">Prioridade</h5>
+              </div>
+              <div class="card-body card-body-header">
+              </div>
+              <div class="card-body card-body-body">
+                
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="newCreateServiceContainerOuterBodyFooter">
+          <button type="button" class="btn btn-danger btnClose ml-1">Fechar</button>
+          <button type="button" class="btn btn-primary btnSave">Guardar</button>          
+        </div>
+      </div>
+    </div>
+
+
+</body>
+
+</html>

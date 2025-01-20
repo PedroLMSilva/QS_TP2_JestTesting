@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Clientes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/icon.ico">
+    <meta name="description" content="Página login">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="libs/bootstrap_4/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="libs/fontawesome-free-5.15.4/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/login.css" />
+
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script src="libs/bootstrap_4/js/bootstrap.min.js"></script>   
+    <script src="scripts/helper.js"></script>    
+    <script src="scripts/login.js"></script>
+</head>
+
+<body>
+    <div class="wrapper xs">
+        <h1>Login</h1>
+        <div id="formContent">
+
+          <div class="first">
+            <i class="fas fa-user" id="icon" alt="User Icon" ></i>
+          </div>
+      
+          <form>
+            <label for="login">Username/Email</label>
+            <input type="text" id="login" class="second" name="login" placeholder="username or email">
+            <label style="position:relative; margin-top: 15px;" for="password">Password</label>
+            <input type="password" id="password" class="third" name="login" placeholder="password">
+            <input type="submit" class="fourth" value="LOGIN">
+          </form>
+     
+          <div id="formFooter"></div>
+        </div>
+      </div>
+</body>
+</html>

@@ -1,0 +1,234 @@
+.tableJobTdIcon {
+    font-size: 15pt;
+    cursor: pointer;
+}
+
+#newServiceContainer, #newCreateServiceContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 3;
+    display: none;
+}
+
+#newServiceContainer .newServiceContainerBlur, #newCreateServiceContainer .newServiceContainerBlur{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background-color: black;
+    opacity: 0.4;
+}
+
+#newServiceContainer .newServiceContainerOuterBody, #newCreateServiceContainer .newCreateServiceContainerOuterBody{
+    position: relative;
+    display: block;
+    padding: 5px;
+    width: 850px;
+    height: 97%;
+    margin: 1% auto;
+    background-color: white;
+    border-radius: 5px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border: 1px solid lightgray;
+}
+
+.jobCardDetails1 .card-header, .jobCardDetails2 .card-header,
+.jobCardDetails11 .card-header, .jobCardDetails21 .card-header {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.jobCardDetails1 .card-header .card-title, .jobCardDetails2 .card-header .card-title,
+.jobCardDetails11 .card-header .card-title, .jobCardDetails21 .card-header .card-title {
+    padding-top: 10px;
+}
+
+.textareaEquipmentTypeDescription, .textareaEquipmentProcedureDescription,
+.textareaEquipmentTypeDescription1, .textareaEquipmentProcedureDescription1 {
+    display: none;
+}
+
+.newServiceContainerOuterBodyFooter,
+.newCreateServiceContainerOuterBodyFooter {
+    position: absolute; 
+    bottom: 0px;
+    height: 47px;
+    width: calc(100% - 20px);
+}
+
+.newServiceContainerOuterBodyFooter button, 
+.newCreateServiceContainerOuterBodyFooter button {
+    position: relative;
+    float: right;
+}
+
+.dropDownTypeJob {
+    position: relative;
+    display: inline-block;
+    width: 250px;
+}
+
+.editJobFinalisedDiv {
+    display: none;
+}
+
+.jobEditCardDetailsPriority .card-header,
+.jobCreateCardDetailsPriority .card-header {
+    padding-top: 3px;
+    padding-bottom: 0px;
+}
+
+.jobEditCardDetailsPriority .card-header h5,
+.jobCreateCardDetailsPriority .card-header h5 {
+    margin-bottom: 5px!important;
+}
+
+.jobEditCardDetailsPriority .card-body-header,
+.jobCreateCardDetailsPriority .card-body-header {
+    border-bottom: 1px solid lightgray;
+    padding-top: 5px;
+    padding-bottom: 8px;
+}
+
+.jobEditCardDetailsPriority .card-body-body,
+.jobCreateCardDetailsPriority .card-body-body {
+    padding-top: 5px;
+    padding-bottom: 8px;
+}
+
+.jobEditCardDetailsPriority .card-body-body .badge,
+.jobCreateCardDetailsPriority .card-body-body .badge {
+    cursor: pointer;
+}
+
+.jobEditCardDetailsPriority .card-body-header .badge,
+.jobEditCardDetailsPriority .card-body-body .badge,
+.jobCreateCardDetailsPriority .card-body-header .badge,
+.jobCreateCardDetailsPriority .card-body-body .badge {
+    width: 100%;
+}
+
+
+/* 
+    CONATINER MESSAGES
+*/
+.container-direct-menssage {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    padding: 10px;
+    width: 450px;
+    z-index: 3;
+    display: none;
+}
+
+.container-direct-menssage-blur {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.4;
+    border-top-left-radius: 5px;
+}
+
+.container-direct-menssage .card {
+    position: relative;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.container-direct-menssage .card .card-header {
+    padding-top: 3px;
+    padding-bottom: 0px;
+}
+
+.container-direct-menssage .card .card-header .card-title {
+    position: relative;
+    margin-bottom: 3px!important;
+    float: left;
+}
+
+.container-direct-menssage .card .card-header .card-tools {
+    position: relative;
+    float: right;
+}
+
+.container-direct-menssage .card .card-body {
+    max-height: 350px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.message-container-info {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.message-container-info .alert {
+    position: relative;
+    width: 70%;
+    margin: 0px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-top: -8px;
+}
+
+.message-container-info .message-title span {
+    position: relative;
+    font-weight: bold;
+}
+
+.message-container-right .message-title {
+    position: relative;
+    transform: translateX(70%);
+}
+
+.message-container-right .alert {
+    position: relative;
+    transform: translateX(40%);
+}
+
+#topButtonMenuUnreadMessage,
+#topButtonMenuUnreadMessageBadge {
+    display: none;
+}
+
+#topButtonMenuMessage{
+    display: none;
+}
+
+#containerDirectMenssageTitle span {
+    position: relative;
+    font-size: 10pt;
+    font-weight: bold;
+    top: -2px!important;
+}
+
+#dropdownMessageMenuBody {
+    padding-bottom: 10px;
+}
+
+.hiddenElement {
+    text-indent: -5000px;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: lightgrey !important;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+}
+
+.pagination .page-link {
+    color: rgba(0, 0, 0, 0.671) !important;
+}

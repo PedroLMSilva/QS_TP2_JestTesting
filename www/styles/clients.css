@@ -1,0 +1,124 @@
+
+.errorDivMessage {
+    text-align: center;
+    color: red;
+    display: none;
+}
+
+.table-client-icon-edit {
+    font-size: 14pt;
+    cursor: pointer;
+    margin-left: 7px;
+}
+
+/* 
+    CONATINER MESSAGES
+*/
+.container-direct-menssage {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    padding: 10px;
+    width: 450px;
+    z-index: 3;
+    display: none;
+}
+
+.container-direct-menssage-blur {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.4;
+    border-top-left-radius: 5px;
+}
+
+.container-direct-menssage .card {
+    position: relative;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.container-direct-menssage .card .card-header {
+    padding-top: 3px;
+    padding-bottom: 0px;
+}
+
+.container-direct-menssage .card .card-header .card-title {
+    position: relative;
+    margin-bottom: 3px!important;
+    float: left;
+}
+
+.container-direct-menssage .card .card-header .card-tools {
+    position: relative;
+    float: right;
+}
+
+.container-direct-menssage .card .card-body {
+    max-height: 350px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.message-container-info {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-bottom: 7px;
+}
+
+.message-container-info .alert {
+    position: relative;
+    width: 70%;
+    margin: 0px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-top: -8px;
+}
+
+.message-container-info .message-title span {
+    position: relative;
+    font-weight: bold;
+}
+
+.message-container-right .message-title,
+.message-container-right .alert {
+    position: relative;
+    float: right;
+}
+
+#topButtonMenuUnreadMessage,
+#topButtonMenuUnreadMessageBadge {
+    display: none;
+}
+
+#topButtonMenuMessage{
+    display: none;
+}
+
+
+#containerDirectMenssageTitle span {
+    position: relative;
+    font-size: 10pt;
+    font-weight: bold;
+    top: -2px!important;
+}
+
+.hiddenElement {
+    margin-left: 5000px;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: lightgrey !important;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+}
+
+.pagination .page-link {
+    color: rgba(0, 0, 0, 0.671) !important;
+}

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Utilizadores</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/icon.ico">
+    <meta name="description" content="Página para gestão de utilizadores">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="libs/bootstrap_4/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="libs/DataTable/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="libs/fontawesome-free-5.15.4/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/users.css" />
+
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script src="libs/bootstrap_4/js/popper.min.js"></script>
+    <script src="libs/bootstrap_4/js/bootstrap.min.js"></script>       
+    <script src="libs/DataTable/jquery.dataTables.min.js"></script>
+    <script src="libs/DataTable/dataTables.bootstrap4.min.js"></script>
+    <script src="scripts/helper.js"></script>
+    <script src="scripts/users.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/users.html">
+          <img src="images/icon.png" width="30" height="30" class="d-inline-block align-top" alt="logotipo da empresa">
+          TechRepair
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/home.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/clients.html">Clientes</a>
+            </li>
+            <li class="nav-item" id="usersNavBarItem">
+                <a class="nav-link disabled" href="#">Utilizadores <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto nav-flex-icons">
+            <li class="nav-item">
+              <a class="nav-link waves-effect waves-light" aria-expanded="false" style="cursor: pointer;">
+                <button type="button" class="btn btn-sm btn-secondary" id="topButtonMenuMessage">
+                  Mensagens
+                </button>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer;">
+                <i class="fas fa-user"></i>
+                <span id="navbarDropdownMenuLinkUserId"></span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item waves-effect waves-light" href="#" id="userLabelIcon"></a>
+                <a class="dropdown-item waves-effect waves-light" href="#" id="buttonLogout">
+                  <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+    </nav>
+    
+    <div class="container mt-2 mb-3">
+      <button class="btn btn-secondary" type="button" id="buttonNewUserOpenModel">Criar utilizador</button>
+  </div>
+
+  <div class="container">
+    <table summary="Todos utilizadores do sistema" style="width: 100%;" class="table table-sm table-striped table-bordered" id="usersTable">
+        <thead>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Nome Utilizador</th>
+            <th scope="col">Email</th>
+            <th scope="col">Acesso</th>
+            <th scope="col">Trabalhos</th>
+            <th scope="col">-</th>
+          </tr>
+        </thead>
+        <tbody> </tbody>
+      </table>
+  </div>
+
+  <div class="container-direct-menssage">
+    <div class="container-direct-menssage-blur"></div>
+    <div class="card card-primary card-outline">
+      <div class="card-header">
+        <h3 class="card-title" id="containerDirectMenssageTitle"></h3>
+
+        <div class="card-tools">
+          <div class="dropdown show">
+            <a class="btn btn-sm btn-secondary dropdown-toggle" role="button" id="dropdownMessageMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-comments"></i>
+            </a>
+          
+            <div class="dropdown-menu" aria-labelledby="dropdownMessageMenuLink">
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="card-body" id="dropdownMessageMenuBody"></div>
+
+      <div class="card-footer">
+        <div class="input-group">
+          <label for="inpWebSocketMessage" class="hiddenElement">Escrever a mensagem</label>
+          <input type="text" name="message" placeholder="Digite mensagem..." class="form-control" id="inpWebSocketMessage">
+          <span class="input-group-append">
+            <button type="button" class="btn btn-primary" id="buttonSendMessage">Send</button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="modalCreateUser">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title" style="font-size: 20pt;">Criar utilizador</h1>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+              <div class="form-group">
+                <label for="inpCreateName">Nome</label>
+                <input type="text" class="form-control" id="inpCreateName" aria-describedby="inpCreateName" placeholder="Nome">
+              </div>
+              <div class="form-group">
+                <label for="inpCreateUserName">Utilizador</label>
+                <input type="text" class="form-control" id="inpCreateUserName" aria-describedby="inpCreateUserName" placeholder="Nome de utilizador">
+              </div>
+              <div class="form-group">
+                <label for="inpCreateEmail">Email</label>
+                <input type="email" class="form-control" id="inpCreateEmail" aria-describedby="inpCreateEmail" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <label for="inpUserType">Tipo utilizador</label>
+                <select class="form-control" aria-label="Tipos de utilizadores" id="inpUserType"></select>
+              </div>
+              <div class="form-group">
+                <label for="inpPassword">Password</label>
+                <input type="password" class="form-control" id="inpPassword" placeholder="Password">
+              </div>
+              <div class="form-group">
+                <label for="inpConfirmPassword">Confirmação de password</label>
+                <input type="password" class="form-control" id="inpConfirmPassword" placeholder="Confirme password">
+              </div>
+              <div class="form-group text-center errorDivMessage"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="buttonNewUserSave">Guardar utilizador</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="modalEditUser">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title" style="font-size: 20pt;">Editar utilizador</h1>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="inpEditName">Nome</label>
+            <input type="text" class="form-control" id="inpEditName" aria-describedby="inpEditName" placeholder="Nome">
+          </div>
+          <div class="form-group">
+            <label for="inpEditUserName">Utilizador</label>
+            <input type="text" class="form-control" id="inpEditUserName" aria-describedby="inpEditUserName" placeholder="Nome de utilizador" readonly>
+          </div>
+          <div class="form-group">
+            <label for="inpEditEmail">Email</label>
+            <input type="email" class="form-control" id="inpEditEmail" aria-describedby="inpEditEmail" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="inpEditUserType">Tipo utilizador</label>
+            <select class="form-control" aria-label="Tipos de utilizadores" id="inpEditUserType"></select>
+          </div>
+              <div class="form-group text-center errorDivMessage"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" id="buttonEditUserDelete">Apagar utilizador</button>
+          <button type="button" class="btn btn-primary" id="buttonEditUserSave">Guardar alterações</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modalMessage">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" style="font-size: 20pt;">Aviso</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-cancel" id="buttonDeleteUserCancel">Cancelar</button>
+        <button type="button" class="btn btn-primary btn-continue" id="buttonDeleteUserConfirm">Continuar</button>              
+      </div>
+    </div>
+  </div>
+</div>
+
+</html>
